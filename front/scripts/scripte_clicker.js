@@ -1,0 +1,1 @@
+console.log("scripte_clicker.js chargé");
