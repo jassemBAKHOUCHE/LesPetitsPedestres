@@ -4,22 +4,25 @@ html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
+    /* cursor: none; */
 }
 
 body {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: flex-start;
     flex-direction: column;
 }
 
-#clicker{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+#falseCursor {
+    pointer-events: none;
+    position: sticky;
+    width: 25px;
+    height: 25px;
+    background-color: blue;
+    transition: left 0.9s, top 0.9s;
+    top: 0;
+    left: 0;
 }
 
 #water {

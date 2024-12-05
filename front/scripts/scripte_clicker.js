@@ -1,12 +1,15 @@
+import { updatePos, collect } from "./water_physics.js";
+
 console.log("scripte_clicker.js chargé");
 
-// Declare as variable
-let secondsPassed;
-let oldDt;
+// Define variables to avoid reference errors
+let oldDt = 0;
+let secondsPassed = 0;
 
 let fpsP;
-let clickerDiv;
 let waterDiv;
+let falseCursor;
+let collectButton;
 
 // Listen to the onLoad event
 window.onload = init;
@@ -14,8 +17,17 @@ window.onload = init;
 // Trigger init function when the page has loaded
 function init() {
     fpsP = document.getElementById('fps');
-    clickerDiv = document.getElementById('clicker');
     waterDiv = document.getElementById('water');
+    falseCursor = document.getElementById('falseCursor');
+    collectButton = document.getElementById('collect');
+
+    // Add event listeners
+    waterDiv.addEventListener('click', (e) => {
+        updatePos(e, falseCursor);
+    });
+    collectButton.addEventListener('click', (e) => {
+        collect(e, falseCursor);
+    });
 
     // Request an animation frame for the first time
     // The gameLoop() function will be called as a callback of this request
@@ -51,7 +63,6 @@ function gameLoop(dt) {
  * @param {float} dt delta time
  */
 function update(dt) {
-
 }
 
 function draw() {
