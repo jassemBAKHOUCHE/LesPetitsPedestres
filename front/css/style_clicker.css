@@ -16,13 +16,13 @@ body {
 
 #falseCursor {
     pointer-events: none;
-    position: fixed;
+    position: sticky;
     width: 25px;
     height: 25px;
-    background-color: black;
+    background-color: blue;
     transition: left 0.9s, top 0.9s;
-    top: 200px;
-    left: 50px;
+    top: 0;
+    left: 0;
 }
 
 
