@@ -24,9 +24,16 @@ function init() {
 
     // Add event listeners
     waterDiv.addEventListener('click', (e) => {
-        updatePos(e, falseCursor);
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.isTrusted){
+            updatePos(e, falseCursor);
+        }
     });
     collectButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation()
         collect(e, falseCursor);
     });
 
@@ -73,10 +80,11 @@ function spawnRandomDiv() {
     const randomY = Math.random() * (waterDivRect.height - 50); // Subtract height of the div
     newDiv.style.width = '50px'
     // Add click event listener
-    newDiv.addEventListener('click', () => {
-        console.log("click + element:", newDiv);
-        if(newDiv.style.backgroundColor != 'red'){
-            newDiv.style.backgroundColor = 'red'
+    newDiv.addEventListener('click', (e) => {
+        if(!e.isTrusted){
+            if(newDiv.style.backgroundColor != 'red'){
+                newDiv.style.backgroundColor = 'red'
+            }
         }
         
     });

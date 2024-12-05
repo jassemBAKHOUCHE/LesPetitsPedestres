@@ -4,6 +4,8 @@
  * @param {HTMLElement} falseCursor the false cursor element
  */
 function updatePos(e, falseCursor){
+    e.preventDefault();
+    e.stopPropagation();
     let speed = (Math.random() * 0.5) + 0.1;
     moveTowardsMouse(e, falseCursor, speed);
 }
@@ -17,17 +19,16 @@ function moveTowardsMouse(e, falseCursor, speed = 0.1) {
     falseCursor.style.top = (cursorY + deltaY * speed) + "px";
 }
 
-function collect(e, falseCursor){
+function collect(e, falseCursor) {
     e.preventDefault();
     e.stopPropagation();
-    const waterDrop = document.createElement('div');
-    waterDrop.innerHTML = '💧';
-    waterDrop.style.position = 'absolute';
-    waterDrop.style.left = falseCursor.style.left;
-    waterDrop.style.top = falseCursor.style.top;
-    waterDrop.style.color = 'blue';
-    waterDrop.style.fontSize = '20px';
-    document.body.appendChild(waterDrop);
+    const rect = falseCursor.getBoundingClientRect();
+    const elements = document.elementsFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    elements.forEach(element => {
+        if (element !== falseCursor && typeof element.click === 'function') {
+            element.click();
+        }
+    });
 }
 
 export { updatePos, collect };
