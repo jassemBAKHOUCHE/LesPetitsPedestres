@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    env_file:
+      - .env
+    networks:
+      - laravel_network
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html:cached  # Utilisation de :cached pour optimiser les performances
+      - /var/www/html/vendor    # Volume Docker interne pour éviter de monter vendor
+      - /var/www/html/node_modules # Volume interne pour éviter de monter node_modules
+    expose:
+      - "9000"
+
+  webserver:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - laravel_network
+    depends_on:
+      - api
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - laravel_network
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+
+volumes:
+  db_data:
+
+networks:
+  laravel_network:
+    driver: bridge
