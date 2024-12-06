@@ -1,0 +1,54 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    
+}
+
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.hud {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0 10px;
+    flex-direction: row;
+    align-content: center;
+}
+
+#falseCursor {
+    pointer-events: none;
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    transition: left 0.9s, top 0.9s;
+    top: 200px;
+    left: 50px;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%; 
+    pointer-events: auto; 
+}
+
+
+#water {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 500px; 
+    background-color: lightblue; 
+}

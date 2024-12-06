@@ -19,15 +19,22 @@ class AuthController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
-        $user = User::create([
-            'pseudo' => $request->pseudo,
-            'password' => Hash::make($request->password),
-        ]);
-
-        return response()->json([
-            'message' => 'User registered successfully',
-            'user' => $user,
-        ], 201);
+        try {
+            $user = User::create([
+                'pseudo' => $request->pseudo,
+                'password' => Hash::make($request->password),
+            ]);
+    
+            return response()->json([
+                'message' => 'User registered successfully',
+                'user' => $user,
+            ], 201); // Code HTTP 201 pour la création
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Error registering user',
+                'error' => $e->getMessage(),
+            ], 500); // Code HTTP 500 pour une erreur interne
+        }
     }
 
     /**

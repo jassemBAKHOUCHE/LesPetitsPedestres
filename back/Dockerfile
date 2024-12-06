@@ -24,6 +24,7 @@ COPY . /var/www/html
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Installe les dépendances Laravel avec Composer
+RUN composer global require laravel/sanctum
 RUN composer install --no-interaction --optimize-autoloader
 
 # Expose le port 9000 pour PHP-FPM
