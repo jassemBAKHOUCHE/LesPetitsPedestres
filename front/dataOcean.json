@@ -1,0 +1,50 @@
+{
+    "cerveau": {
+        "titre": "Le Maître des Pensées",
+        "contenu": "Le cerveau est l'organe central du système nerveux. Il régule nos émotions, nos pensées, et notre capacité à interagir avec le monde."
+    },
+    "heart": {
+        "titre": "Le Battement de Vie",
+        "contenu": "Le cœur pompe le sang à travers tout le corps, assurant l'apport d'oxygène et de nutriments essentiels à nos cellules."
+    },
+    "poumons": {
+        "titre": "Les Souffles Vitaux",
+        "contenu": "Les poumons permettent l'échange d'oxygène et de dioxyde de carbone, indispensable pour alimenter notre organisme en énergie."
+    },
+    "estomac": {
+        "titre": "La Forge de la Digestion",
+        "contenu": "L'estomac décompose les aliments en nutriments essentiels grâce à ses sucs gastriques, assurant le carburant de notre corps."
+    },
+    "rein": {
+        "titre": "Les Filtreurs du Sang",
+        "contenu": "Les reins purifient le sang en éliminant les déchets et en régulant l'équilibre hydrique et électrolytique du corps."
+    },
+    "foie": {
+        "titre": "Le Laboratoire Chimique",
+        "contenu": "Le foie traite les toxines, stocke l'énergie et participe à la digestion des graisses grâce à la production de bile."
+    },
+    "silence": {
+        "titre": "L'Écho de l'Absence",
+        "contenu": "Le silence est l'état d'absence de bruit, un moment de quiétude permettant introspection, repos et recentrage mental."
+    },
+    "gcm": {
+        "titre": "La Force des Glaciers",
+        "contenu": "Les glaciers continentaux massifs (GCM) jouent un rôle clé dans la régulation du climat en stockant d'énormes quantités d'eau douce."
+    },
+    "phytoplancton": {
+        "titre": "Le Poumon Bleu",
+        "contenu": "Le phytoplancton est une base essentielle de la chaîne alimentaire océanique et produit la moitié de l’oxygène de notre planète."
+    },
+    "surexploitation": {
+        "titre": "Le Danger Invisible",
+        "contenu": "La surexploitation des ressources naturelles menace les écosystèmes et réduit leur capacité à se régénérer durablement."
+    },
+    "icebergs": {
+        "titre": "Les Géants de Glace",
+        "contenu": "Les icebergs, détachés des glaciers, flottent dans les océans et témoignent des changements climatiques en cours."
+    },
+    "corrail": {
+        "titre": "Les Jardins Sous-Marins",
+        "contenu": "Le corail forme des récifs abritant une biodiversité exceptionnelle, mais il est menacé par le réchauffement climatique et l'acidification des océans."
+    }
+}

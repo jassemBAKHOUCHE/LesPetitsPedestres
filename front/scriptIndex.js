@@ -1,12 +1,28 @@
+var content
+fetch('dataOcean.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json(); // Parse la réponse JSON
+  })
+  .then(data => {
+    content = data
+  })
+  .catch(error => {
+    console.error('Erreur lors de la requête :', error);
+  });
+
+
 var content_hbody = document.querySelector("#humain_content img")
 content_hbody.id = "hearth_c"
 var content_ocean = document.querySelector("#ocean_content img")
 content_ocean.id = "Gulf_stream"
-
+var selected_h = document.getElementById("cerveau")
+var selected_o = document.getElementById("silence")
 
 var killTools = document.getElementById("killTools")
 var healTools = document.getElementById("healTools")
-
 
 function changeSelect(e) {
     if (e.target.tagName == "P") {
@@ -30,41 +46,60 @@ document.getElementById("healTools_cont").addEventListener("click", changeSelect
 document.getElementById("killTools_cont").addEventListener("click", changeSelect)
 
 function display_content_h(id) {
-
+    var reponse = content[id]
+    var dest = document.getElementById("ocean_text")
+    dest.innerHTML = "<h2>"+ reponse["titre"] +"</h2>" + reponse["contenu"]
 }
 
 function display_content_o(id) {
-
+    var reponse = content[id]
+    var dest = document.getElementById("humain_text")
+    dest.innerHTML = "<h2>"+ reponse["titre"] +"</h2>" + reponse["contenu"]
 }
 
 function changeOrgan(e) {
     if (e.target.tagName == "IMG") {
-        console.log(e.target.getAttribute("data_src"))
+
         //content_hbody.src != e.target.src && !(content_ocean.src == e.target.data_src)
-        if (content_hbody.src != e.target.src) {
+
+        if (e.target.getAttribute("data_i")=="1") {
+            selected_h.className = ""
+            selected_o.className = ""
+            selected_h = e.target
+            selected_o = document.getElementById(e.target.getAttribute("data_id"))
+            e.target.className = "selected"
+            document.getElementById(e.target.getAttribute("data_id")).className = "selected"
+            e.target.className = "selected"
+            document.getElementById(e.target.getAttribute("data_id")).className = "selected"
             content_hbody.alt = e.target.alt
             content_hbody.src = e.target.src
             content_ocean.alt = e.target.getAttribute("data_alt")
             content_ocean.src = e.target.getAttribute("data_src")
-            display_content_h(content_hbody.id)
-            display_content_o(content_ocean.id)
+            display_content_h(e.target.id)
+            display_content_o(e.target.getAttribute("data_id"))
         }
-        // else if (content_ocean.data_src != e.target.src && !(content_hbody.src == e.target.src)) {
-        //     console.log("1")
-        //     content_hbody.alt = e.target.data_alt
-        //     content_hbody.src = e.target.data_src
-        //     content_ocean.alt = e.target.alt
-        //     content_ocean.src = e.target.src
-        //     display_content_h(content_hbody.alt)
-        //     display_content_o(content_ocean.alt)
-        // }
+        else if (content_ocean.getAttribute("data_src") != e.target.src && !(content_hbody.src == e.target.src)) {
+            selected_h.className = ""
+            selected_o.className = ""
+            selected_h = e.target
+            selected_o = document.getElementById(e.target.getAttribute("data_id"))
+            e.target.className = "selected"
+            document.getElementById(e.target.getAttribute("data_id")).className = "selected"
+            e.target.className = "selected"
+            content_hbody.alt = e.target.getAttribute("data_alt")
+            content_hbody.src = e.target.getAttribute("data_src")
+
+            content_ocean.alt = e.target.alt
+            content_ocean.src = e.target.src
+            display_content_h(e.target.getAttribute("data_id"))
+            display_content_o(e.target.id)
+        }
     }
 }
 
 // HUMAIN
 var coeur = document.getElementById("heart")
 coeur.addEventListener("click", changeOrgan)
-console.log(coeur.getAttribute("data_src"))
 
 var poumon = document.getElementById("poumons")
 poumon.addEventListener("click", changeOrgan)
@@ -84,19 +119,19 @@ foi.addEventListener("click", changeOrgan)
 
 // OCEAN
 var GCM = document.getElementById("gcm")
-//GCM.addEventListener("click", changeOrgan)
+GCM.addEventListener("click", changeOrgan)
 
-var phytoplancton = document.getElementById("plankton")
-//phytoplancton.addEventListener("click", changeOrgan)
+var phytoplancton = document.getElementById("phytoplancton")
+phytoplancton.addEventListener("click", changeOrgan)
 
 var surexploitation = document.getElementById("surexploitation")
-//surexploitation.addEventListener("click", changeOrgan)
+surexploitation.addEventListener("click", changeOrgan)
 
 var silence = document.getElementById("silence")
-//silence.addEventListener("click", changeOrgan)
+silence.addEventListener("click", changeOrgan)
 
 var icebergs = document.getElementById("icebergs")
-//icebergs.addEventListener("click", changeOrgan)
+icebergs.addEventListener("click", changeOrgan)
 
 var corrail = document.getElementById("corrail")
-//corrail.addEventListener("click", changeOrgan)
+corrail.addEventListener("click", changeOrgan)

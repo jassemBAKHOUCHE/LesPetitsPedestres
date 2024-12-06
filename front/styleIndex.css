@@ -2,15 +2,21 @@
     --border-radius: 5px;
 }
 
-body { /* To remove */
+body {
     background-image: url("img/oceanBackground.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 0;
+    font-family: sans-serif;
 }
 
 ::selection {
-    background-color:rgb(106, 154, 176);
+    background-color:#6a9ab0;
     color: rgb(0, 31, 63);
 }
+
+
+
 
 /* Body Link Ocean */
 #bodylinkocean {
@@ -20,13 +26,21 @@ body { /* To remove */
     min-height: 100vh;
 }
 
-
 #humain, #ocean {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     backdrop-filter: blur(10px);
+}
+
+/* ICONS */
+#bodylinkocean #humain #icons li, #bodylinkocean #ocean #icons li {
+    padding-left: .5em;
+}
+
+#bodylinkocean #humain #icons li img:hover {
+    cursor: pointer;
 }
 
 /* HUMAIN */
@@ -44,6 +58,7 @@ body { /* To remove */
 
 /* TOOLS */
 #tools {
+    display: none;
     background-color: rgba(106, 154, 176, 0.7);
     backdrop-filter: blur(10px);
 }
@@ -66,7 +81,7 @@ body { /* To remove */
 
 #mainTools li:hover {
     cursor: pointer;
-    background-color: #aaa;
+    background-color: rgba(58, 109, 140, 0.7);
     border-radius: var(--border-radius);
     transition: .3s;
 }
@@ -76,4 +91,36 @@ body { /* To remove */
     flex-direction: row;
     list-style-type: none;
     flex-wrap: wrap;
+}
+
+#icons img {
+    transition: .3s;
+    border-radius: 2em;
+    padding: .1em;
+}
+
+#ocean #icons img {
+    background-color: rgba(0, 31, 63, 0.7);
+}
+
+#humain #icons img {
+    background-color: rgba(58, 109, 140, 0.7);
+}
+
+#humain #icons img:hover, #humain .selected {
+    background-color: rgba(0, 31, 63, 0.7) !important;
+    border-radius: 1em !important;
+    transition: .3s !important;
+}
+
+#ocean #icons img:hover, #ocean .selected {
+    background-color: rgba(58, 109, 140, 0.7) !important;
+    border-radius: 1em !important;
+    transition: .3s !important;
+}
+
+#ocean_text, #humain_text {
+    color: aliceblue;
+    padding-left: .2em;
+    padding-right: .2em;
 }
