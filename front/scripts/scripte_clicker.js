@@ -1,5 +1,6 @@
 import { updatePos, collect } from "./water_physics.js";
 import { loginuser } from "../lib/auth.js";
+import { addMoney, getMoney } from "../lib/money.js";
 
 console.log("scripte_clicker.js chargé");
 
@@ -41,6 +42,7 @@ function init() {
         console.log(data);
         loginToken = data.access_token;
     });
+    refreshMoney(0);
 
     // Add event listeners
     waterDiv.addEventListener('click', (e) => {
@@ -69,9 +71,15 @@ function init() {
     window.requestAnimationFrame(gameLoop);
 }
 
-function refreshMoney() {
-    // TODO Update the money counter
-    moneyP.innerText = "Money: " + money +"♻️";
+function refreshMoney(montant) {
+    addMoney(montant, loginToken).then((data) => {
+        console.log(data);
+        getMoney(loginToken).then((data) => {
+            console.log(data);
+            money = data.money;
+            moneyP.innerText = "Money: " + money +"♻️";
+        });
+    });
 }
 
 /**
@@ -135,8 +143,8 @@ function spawnRandomDiv() {
         if (!e.isTrusted) {
             if (newImg.style.backgroundColor !== 'red') {
                 newImg.remove()
-                money++
-                refreshMoney()
+                bubbles = bubbles.filter(bubble => bubble.element !== newImg)
+                refreshMoney(1)
          }
         }
     });

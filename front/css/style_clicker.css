@@ -38,15 +38,10 @@ body {
     left: 50px;
 }
 
-
-
-
-
 .bubble {
     position: absolute;
     border-radius: 50%; 
     pointer-events: auto; 
-    cursor: pointer; 
 }
 
 
