@@ -38,10 +38,8 @@ function init() {
     moneyP = document.getElementById('money');
 
     // Register the user
-    loginuser().then((data) => {
-        console.log(data);
-        loginToken = data.access_token;
-    });
+    loginToken = window.sessionStorage.getItem("token");
+    window.sessionStorage.removeItem("token");
     refreshMoney(0);
 
     // Add event listeners

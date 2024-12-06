@@ -1,4 +1,4 @@
-async function registerUser() {
+async function registerUser(login, password) {
     try {
         const response = await fetch('http://57.128.111.45:8000/api/register', {
             method: 'POST',
@@ -7,8 +7,8 @@ async function registerUser() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "pseudo": "lej",
-                "password": "password"
+                "pseudo": login,
+                "password": password
             }),
         });
         const data = await response.json();
@@ -18,7 +18,7 @@ async function registerUser() {
     }
 }
 
-async function loginuser() {
+async function loginuser(login, password) {
     try{
         const response = await fetch('http://57.128.111.45:8000/api/login', {
             method: 'POST',
@@ -27,8 +27,8 @@ async function loginuser() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "pseudo": "lej",
-                "password": "password"
+                "pseudo": login,
+                "password": password
             }),
         });
         const data = await response.json();
