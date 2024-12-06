@@ -8,7 +8,7 @@
     })
     .catch(error => console.error('Erreur lors de la récupération du fichier JSON:', error)); */
 
-questions = [
+let questions = [
   {
     question:
       "Quelle est la principale cause de la montée du niveau des océans ?",
