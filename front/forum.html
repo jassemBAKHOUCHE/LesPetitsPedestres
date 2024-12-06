@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum Général Anti-UX</title>
+    <link rel="stylesheet" href="public/css/style_forum.css">
+    <script src="public/scripts/script_forum.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Forum</h1>
+        <p>Utilisez le slider pour choisir une lettre et l'ajouter à l'input !</p>
+    
+        <!-- Champ Input -->
+        <input type="text" id="inputField" readonly placeholder="Votre message ICI" />
+    
+
+    
+        <!-- Boutons -->
+        <button id="publishBtn" class="btn publish-btn">Publier</button>
+        <button id="addLetterBtn" class="btn add-btn">Ajouter Lettre</button>
+    
+        <!-- Conteneur pour afficher la lettre aléatoire -->
+        <div id="letterContainer"></div>
+    
+        <!-- Indicateur de chargement (Roue de 5 points qui s'illuminent) -->
+        <div id="loadingIndicator" class="loading" style="display: none;">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    
+        <!-- Conteneur pour afficher les publications -->
+        <div id="publicationsContainer"></div>
+        <!-- Slider input -->
+        <div class="slider-container">
+            <span class="slider-label">Lettre :</span>
+            <input type="range" class="slider" id="sliderInput" min="65" max="90" value="65">
+            <span id="sliderLetter">A</span>
+        </div>
+    </div>
+</body>
+</html>

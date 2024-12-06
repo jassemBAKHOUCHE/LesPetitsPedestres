@@ -1,0 +1,287 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    position: relative;
+}
+
+.input-field {
+    width: 300px;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #888;
+    display: inline-block;
+}
+
+.slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.slider-label {
+    margin-right: 10px;
+}
+
+.slider {
+    width: 300px;
+}
+
+/* Placement chaotique des boutons */
+.btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: absolute;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    border: 2px solid black;
+    background: #f0f0f0;
+}
+
+/* Effet hover : texte en italique */
+.btn:hover {
+    color: #fff;
+    font-style: italic;
+    background: #333; /* Fond sombre */
+}
+
+/* Effet 3D au clic : bouton avec effet de profondeur */
+.btn:active {
+    transform: translateY(4px); /* Légère pression du bouton */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Ombre 3D sous le bouton */
+    background: #ccc; /* Changement de fond quand on clique */
+}
+
+/* Pour simuler la vue du côté avec un effet 3D */
+.add-btn {
+    top: 20px;
+    left: 100px;
+    background: #ff6347;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.2), 2px 2px 8px rgba(0, 0, 0, 0.3); /* Ombre interne et externe */
+}
+
+.publish-btn {
+    bottom: -100px;
+    right: -80px;
+    background: #4CAF50;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.2), 2px 2px 8px rgba(0, 0, 0, 0.3); /* Ombre interne et externe */
+}
+
+/* Popup de validation */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.validation-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.btn-confirm {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+/* Effet hover sur le bouton de confirmation */
+.btn-confirm:hover {
+    font-style: italic;
+    background: #555;
+}
+
+/* Effet clic 3D */
+.btn-confirm:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Forum */
+.forum {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: left;
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.forum h2 {
+    text-align: center;
+}
+
+.forum-message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.forum-message p {
+    margin: 0;
+}
+
+
+/* Style des publications */
+.publication {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+}
+
+/* styles.css */
+
+/* Style de la roue de 5 points en pentagone */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+    width: 50px; /* Taille de la roue */
+    height: 50px;
+}
+
+/* Les points de la roue */
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc; /* Gris clair */
+    position: absolute;
+    animation: pulse 1.2s infinite; /* Animation pour chaque point */
+}
+
+/* Créer un effet de pulsation pour les points */
+@keyframes pulse {
+    0% { background-color: #ccc; } /* Gris clair */
+    50% { background-color: #3498db; } /* Bleu, pour l'illumination */
+    100% { background-color: #ccc; } /* Retour au gris */
+}
+
+/* styles.css */
+
+/* Style de la roue de 5 points en pentagone */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+    width: 50px; /* Taille de la roue */
+    height: 50px;
+}
+
+/* Les points de la roue */
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc; /* Gris clair */
+    position: absolute;
+    animation: pulse 1.2s infinite; /* Animation pour chaque point */
+}
+
+/* Créer un effet de pulsation pour les points */
+@keyframes pulse {
+    0% { background-color: #ccc; } /* Gris clair */
+    50% { background-color: #3a3a3a; } /* Bleu, pour l'illumination */
+    100% { background-color: #ccc; } /* Retour au gris */
+}
+
+/* styles.css */
+
+/* Style de la roue de 5 points en pentagone */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+    width: 50px; /* Taille de la roue */
+    height: 50px;
+}
+
+/* Les points de la roue */
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc; /* Gris clair */
+    position: absolute;
+    animation: pulse 1.2s infinite; /* Animation pour chaque point */
+}
+
+/* Créer un effet de pulsation pour les points */
+@keyframes pulse {
+    0% { background-color: #ccc; } /* Gris clair */
+    50% { background-color: #474747; } /* Bleu, pour l'illumination */
+    100% { background-color: #ccc; } /* Retour au gris */
+}
+
+/* Position des points pour former un pentagone rapproché */
+.dot:nth-child(1) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg) translateX(18px); /* Rapprocher les points */
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(72deg) translateX(18px); /* Rapprocher les points */
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(144deg) translateX(18px); /* Rapprocher les points */
+    animation-delay: 0.4s;
+}
+
+.dot:nth-child(4) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(216deg) translateX(18px); /* Rapprocher les points */
+    animation-delay: 0.6s;
+}
+
+.dot:nth-child(5) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(288deg) translateX(18px); /* Rapprocher les points */
+    animation-delay: 0.8s;
+}
