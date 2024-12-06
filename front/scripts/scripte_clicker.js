@@ -2,6 +2,9 @@ import { updatePos, collect } from "./water_physics.js";
 
 console.log("scripte_clicker.js chargé");
 
+
+const SPAWN_SPEED = 100
+
 // Define variables to avoid reference errors
 let oldDt = 0;
 let secondsPassed = 0;
@@ -12,7 +15,7 @@ let fpsP;
 let waterDiv;
 let falseCursor;
 let collectButton;
-let moneyP;
+let moneyP = document.getElementById("money");
 let bubbles = []; // Array to store bubble elements and their data
 
 // List of image paths for random bubble selection
@@ -108,8 +111,8 @@ function gameLoop(dt) {
     if (falseCursorRect.top < waterDivRect.top) {
         falseCursor.style.top = waterDivRect.top + 'px';
     }
-    if (Math.floor(Math.random()*10000)<=25) {
-        spawnRandomDiv()
+    if ( bubbles.length < 15 && Math.floor(Math.random()*10000)<=SPAWN_SPEED) {
+        spawnRandomDiv(money)
         
     }
     // The loop function has reached its end
@@ -144,6 +147,10 @@ function spawnRandomDiv() {
         if (!e.isTrusted) {
             if (newImg.style.backgroundColor !== 'red') {
                 newImg.remove()
+                money++
+                refreshMoney()
+                
+        
             }
         }
     });
