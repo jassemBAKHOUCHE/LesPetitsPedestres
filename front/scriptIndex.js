@@ -15,6 +15,15 @@ fetch('dataOcean.json')
     console.error('Erreur lors de la requête :', error);
   });
 
+document.getElementById("swap").addEventListener("click", function() {
+    document.getElementById("humain").style = "display: none;"
+    document.getElementById("ocean").style = ""
+})
+
+document.getElementById("swap2").addEventListener("click", function() {
+    document.getElementById("humain").style = ""
+    document.getElementById("ocean").style = "display: none;"
+})
 
 var content_hbody = document.querySelector("#humain_content img")
 content_hbody.id = "hearth_c"
