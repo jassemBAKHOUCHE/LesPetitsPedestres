@@ -27,6 +27,10 @@ app.get('/quizz', (req, res) => {
     res.sendFile(path.join(__dirname, 'quizz.html'));
 });
 
+app.get('/forum', (req, res) => {
+    res.sendFile(path.join(__dirname, 'forum.html'));
+});
+
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on ${process.env.URL}:${process.env.PORT}`);
 });

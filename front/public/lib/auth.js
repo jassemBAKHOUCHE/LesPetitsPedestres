@@ -34,6 +34,7 @@ async function loginuser(login, password) {
             }),
         });
         const data = await response.json();
+        window.sessionStorage.setItem("username", login)
         return data;
     } catch (error) {
         console.error(error);

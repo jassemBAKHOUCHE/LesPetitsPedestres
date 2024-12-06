@@ -74,7 +74,8 @@ publishBtn.addEventListener('click', () => {
         
         const messageElement = document.createElement('span');
         messageElement.classList.add('message');
-        messageElement.textContent = messageContent;
+        let uname = window.sessionStorage.getItem("username")
+        messageElement.textContent = uname + " : " + messageContent;
 
 
         // Ajouter le message et le timestamp au conteneur de la publication
@@ -96,14 +97,16 @@ publishBtn.addEventListener('click', () => {
 // Fonction pour envoyer une publication via POST
 function postPublication(messageContent) {
     let token = window.sessionStorage.getItem("token");
+    let uname = window.sessionStorage.getItem("username")
     fetch('http://57.128.111.45:8000/api/posts', {
         method: 'POST',
         headers: {
+            'Accept': 'application/json',
             'Content-Type': 'application/json',
             "Authorization": "Bearer " + token
             
         },
-        body: JSON.stringify({ message: messageContent }), // Envoi du message sous forme JSON
+        body: JSON.stringify({ contenu: messageContent, title: uname }), // Envoi du message sous forme JSON
     })
     .then(response => response.json())
     .then(data => {
@@ -121,6 +124,7 @@ function getPublications() {
     fetch('http://57.128.111.45:8000/api/posts', {
         method: 'GET',
         headers: {
+            'Accept': 'application/json',
             'Content-Type': 'application/json',
             "Authorization": "Bearer " + token
         },
@@ -128,12 +132,12 @@ function getPublications() {
     .then(response => response.json())
     .then(data => {
         console.log('Publications récupérées:', data);
-        data.forEach(publication => {
+        data.posts.forEach(publication => {
             const publicationElement = document.createElement('div');
             publicationElement.classList.add('publication');
             const messageElement = document.createElement('span');
             messageElement.classList.add('message');
-            messageElement.textContent = publication.message;
+            messageElement.textContent = publication.titre + " : " + publication.contenu;
             publicationElement.appendChild(messageElement);
             publicationsContainer.appendChild(publicationElement);
         });
