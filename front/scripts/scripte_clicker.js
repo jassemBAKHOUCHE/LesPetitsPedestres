@@ -158,3 +158,4 @@ function updateBubbles() {
         bubbleA.element.style.transform = `translate(${bubbleA.x}px, ${bubbleA.y}px)`;
     }
 }
+money Requça est

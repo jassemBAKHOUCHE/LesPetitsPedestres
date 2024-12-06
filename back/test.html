@@ -6,17 +6,23 @@
     <title>Document</title>
 </head>
 <body>
-    <script type="module">
-        fetch('http://localhost:8000/api/', {
-            method: 'GET',
-            credentials: 'include', // Si des cookies ou credentials sont utilisés
+    <script>
+        fetch('http://localhost:8000/api/register', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "pseudo": "lej",
+                "password": "password"
+            }),
         })
-            .then(response => {
-                console.log('Headers:', [...response.headers.entries()]);
-                return response.json();
-            })
-            .then(data => console.log('Data:', data))
-            .catch(error => console.error('Error:', error));
+        .then(response => {
+            return response.json();
+        })
+        .then(data => console.log('Data:', data))
+        .catch(error => console.error('Error:', error));
 
     </script>
 </body>
