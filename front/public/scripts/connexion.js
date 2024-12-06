@@ -1,3 +1,4 @@
+import { URL } from "../global.js";
 import { loginuser } from "../lib/auth.js";
 
 let pseudo = document.querySelector("#pseudo");
@@ -12,7 +13,7 @@ button.addEventListener("click", () => {
         console.log(data)
         let token = data.access_token;
         window.sessionStorage.setItem("token", token);
-        window.location.replace(`http://localhost:3000/clicker`);
+        window.location.replace(`${URL}/clicker`);
       })
   } else {
     alert("Veuillez remplir tous les champs.");
