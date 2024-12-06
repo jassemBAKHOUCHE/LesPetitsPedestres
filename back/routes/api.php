@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MoneyController;
+use App\Http\Controllers\PostController;
 
 Route::middleware(\App\Http\Middleware\DisableCors::class)->get('/', function () {
     return response()->json(['message' => 'CORS disabled']);
@@ -17,3 +18,6 @@ Route::middleware(\App\Http\Middleware\DisableCors::class)->post('/logout', [Aut
 
 Route::middleware(\App\Http\Middleware\DisableCors::class)->post('/addMoney', [MoneyController::class,'addMoney'])->middleware('auth:sanctum');
 Route::middleware(\App\Http\Middleware\DisableCors::class)->get('/getMoney', [MoneyController::class,'getMoney'])->middleware('auth:sanctum');
+
+Route::middleware(\App\Http\Middleware\DisableCors::class)->get('/posts', [PostController::class, "index"])->middleware('auth:sanctum');
+Route::middleware(\App\Http\Middleware\DisableCors::class)->post('/posts', [PostController::class, "store"])->middleware('auth:sanctum');
