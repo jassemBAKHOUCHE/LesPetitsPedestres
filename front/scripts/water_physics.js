@@ -15,8 +15,10 @@ function moveTowardsMouse(e, falseCursor, speed = 0.1) {
     const cursorY = rect.top + rect.height / 2;
     const deltaX = e.clientX - cursorX;
     const deltaY = e.clientY - cursorY;
-    falseCursor.style.left = (cursorX + deltaX * speed) + "px";
-    falseCursor.style.top = (cursorY + deltaY * speed) + "px";
+    const xOfset = (Math.random() - 0.5) * 15;
+    const yOfset = (Math.random() - 0.5) * 15;
+    falseCursor.style.left = (cursorX + xOfset + deltaX * speed) + "px";
+    falseCursor.style.top = (cursorY + yOfset + deltaY * speed) + "px";
 }
 
 function collect(e, falseCursor) {

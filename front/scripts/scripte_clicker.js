@@ -5,15 +5,40 @@ console.log("scripte_clicker.js chargé");
 // Define variables to avoid reference errors
 let oldDt = 0;
 let secondsPassed = 0;
+let money = 0;
+let waterHeight = 0;
 
 let fpsP;
 let waterDiv;
 let falseCursor;
 let collectButton;
+let moneyP;
 let bubbles = []; // Array to store bubble elements and their data
 
 // Listen to the onLoad event
 window.onload = init;
+
+function registerUser() {
+    fetch('http://localhost:8000/api/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            pseudo: 'test',
+            password: 'test',
+        })
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    }).catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+}
 
 // Trigger init function when the page has loaded
 function init() {
@@ -21,6 +46,9 @@ function init() {
     waterDiv = document.getElementById('water');
     falseCursor = document.getElementById('falseCursor');
     collectButton = document.getElementById('collect');
+
+    // Register the user
+    registerUser();
 
     // Add event listeners
     waterDiv.addEventListener('click', (e) => {
@@ -44,6 +72,11 @@ function init() {
     window.requestAnimationFrame(gameLoop);
 }
 
+function refreshMoney() {
+    // TODO Update the money counter
+    moneyP.innerText = "Money: " + money +"♻️";
+}
+
 /**
  * Main game loop
  * @param {float} dt delta time
@@ -58,6 +91,17 @@ function gameLoop(dt) {
 
     // Update all bubbles
     updateBubbles();
+
+    // Update water height
+    waterHeight = 5 * Math.sin(dt / 1000); // 10 pixels per second
+    waterDiv.style.height = (80 + waterHeight) + '%';
+
+    // Prevent the false cursor from going above the water
+    const falseCursorRect = falseCursor.getBoundingClientRect();
+    const waterDivRect = waterDiv.getBoundingClientRect();
+    if (falseCursorRect.top < waterDivRect.top) {
+        falseCursor.style.top = waterDivRect.top + 'px';
+    }
 
     // The loop function has reached its end
     // Keep requesting new frames
