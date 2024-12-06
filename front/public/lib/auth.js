@@ -1,6 +1,8 @@
+import { URL } from "../global";
+
 async function registerUser(login, password) {
     try {
-        const response = await fetch('http://57.128.111.45:8000/api/register', {
+        const response = await fetch(URL+'/api/register', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -20,7 +22,7 @@ async function registerUser(login, password) {
 
 async function loginuser(login, password) {
     try{
-        const response = await fetch('http://57.128.111.45:8000/api/login', {
+        const response = await fetch(URL+'/api/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

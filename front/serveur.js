@@ -16,11 +16,15 @@ app.get('/connexion', (req, res) => {
 });
 
 app.get('/inscription', (req, res) => {
-    // res.sendFile(path.join(__dirname, 'inscription.html'));
+    res.sendFile(path.join(__dirname, 'inscription.html'));
 });
 
 app.get('/clicker', (req, res) => {
     res.sendFile(path.join(__dirname, 'clicker.html'));
+});
+
+app.get('/quizz', (req, res) => {
+    res.sendFile(path.join(__dirname, 'quizz.html'));
 });
 
 app.listen(process.env.PORT, () => {
