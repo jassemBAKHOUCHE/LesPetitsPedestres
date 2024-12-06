@@ -1,4 +1,4 @@
-import { URL } from "../global";
+import { URL } from "../global.js";
 
 async function registerUser(login, password) {
     try {
