@@ -1,8 +1,8 @@
-import { URL } from "../global.js";
+import { URL_API } from "../global.js";
 
 async function registerUser(login, password) {
     try {
-        const response = await fetch(URL+'/api/register', {
+        const response = await fetch(URL_API+'/register', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -22,7 +22,7 @@ async function registerUser(login, password) {
 
 async function loginuser(login, password) {
     try{
-        const response = await fetch(URL+'/api/login', {
+        const response = await fetch(URL_API+'/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

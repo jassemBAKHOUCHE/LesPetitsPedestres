@@ -11,13 +11,21 @@ button.addEventListener("click", () => {
     registerUser(pseudo.value, mdp.value)
     .then((data) => {
       console.log(data)
-      loginuser(pseudo.value, mdp.value)
-      .then((data) => {
-        console.log(data)
-        let token = data.access_token;
-        window.sessionStorage.setItem("token", token);
-        window.location.replace(`${URL}/clicker`);
-      })
+      if(data){
+          loginuser(pseudo.value, mdp.value)
+          .then((data) => {
+            console.log(data)
+            if(data && data.access_token){
+              let token = data.access_token;
+              window.sessionStorage.setItem("token", token);
+              window.location.replace(`${URL}/clicker`);
+            }else{
+              console.log("conn failed : ", data)
+            }
+          })
+      }else {
+        console.log("register failed : ", data);
+      }
     })
   } else {
     alert("Veuillez remplir tous les champs.");

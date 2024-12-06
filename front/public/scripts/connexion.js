@@ -11,9 +11,13 @@ button.addEventListener("click", () => {
     loginuser(pseudo.value, mdp.value)
       .then((data) => {
         console.log(data)
-        let token = data.access_token;
-        window.sessionStorage.setItem("token", token);
-        window.location.replace(`${URL}/clicker`);
+        if(data && data.access_token){
+            let token = data.access_token;
+            window.sessionStorage.setItem("token", token);
+            window.location.replace(`${URL}/clicker`);
+        }else{
+          console.log("conn failed : ", data)
+        }
       })
   } else {
     alert("Veuillez remplir tous les champs.");

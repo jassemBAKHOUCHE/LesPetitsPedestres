@@ -1,8 +1,8 @@
-import { URL } from "../global.js";
+import { URL_API } from "../global.js";
 
 async function addMoney(montant, token) {
     try {
-        const response = await fetch(URL+'/api/addMoney', {
+        const response = await fetch(URL_API+'/addMoney', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -22,7 +22,7 @@ async function addMoney(montant, token) {
 
 async function getMoney(token) {
     try {
-        const response = await fetch(URL+'/api/getMoney', {
+        const response = await fetch(URL_API+'/getMoney', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
