@@ -1,4 +1,5 @@
 import { updatePos, collect } from "./water_physics.js";
+import { loginuser } from "../lib/auth.js";
 
 console.log("scripte_clicker.js chargé");
 
@@ -7,6 +8,7 @@ let oldDt = 0;
 let secondsPassed = 0;
 let money = 0;
 let waterHeight = 0;
+let loginToken = ""
 
 let fpsP;
 let waterDiv;
@@ -23,28 +25,6 @@ const bubbleImages = [
 // Listen to the onLoad event
 window.onload = init;
 
-function registerUser() {
-    fetch('http://localhost:8000/api/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            pseudo: 'test',
-            password: 'test',
-        })
-    }).then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    }).then(data => {
-        console.log(data);
-    }).catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-    });
-}
-
 // Trigger init function when the page has loaded
 function init() {
     fpsP = document.getElementById('fps');
@@ -54,7 +34,10 @@ function init() {
     moneyP = document.getElementById('money');
 
     // Register the user
-    registerUser();
+    loginuser().then((data) => {
+        console.log(data);
+        loginToken = data.access_token;
+    });
 
     // Add event listeners
     waterDiv.addEventListener('click', (e) => {
@@ -78,10 +61,6 @@ function init() {
             collect(e, falseCursor);
         }
     });
-
-    console.log("d")
-    // Start spawning divs every 5 seconds
-
 
     // Request an animation frame for the first time
     window.requestAnimationFrame(gameLoop);
@@ -229,4 +208,3 @@ function updateBubbles() {
         bubbleA.element.style.transform = `translate(${bubbleA.x}px, ${bubbleA.y}px)`;
     }
 }
-money Requça est
