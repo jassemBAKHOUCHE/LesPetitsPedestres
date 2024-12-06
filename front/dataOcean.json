@@ -1,31 +1,31 @@
 {
     "cerveau": {
         "titre": "Le Maître des Pensées",
-        "contenu": "Le cerveau est l'organe central du système nerveux. Il régule nos émotions, nos pensées, et notre capacité à interagir avec le monde."
+        "contenu": "Le cerveau est l'organe central du système nerveux. Il régule nos émotions, nos pensées, et notre capacité à interagir avec le monde. Il reçoit et traite les informations des sens, permettant de réagir au monde environnant. En tant que siège de la mémoire et de la conscience, le cerveau est indispensable pour la coordination et la prise de décisions, garantissant ainsi le bon fonctionnement de l’ensemble de l’organisme."
     },
     "heart": {
         "titre": "Le Battement de Vie",
-        "contenu": "Le cœur pompe le sang à travers tout le corps, assurant l'apport d'oxygène et de nutriments essentiels à nos cellules."
+        "contenu": "Le cœur est le moteur de la circulation sanguine. En pompant constamment, il assure le transport de l’oxygène et des nutriments vers toutes les cellules, tout en éliminant les déchets métaboliques. Un battement régulier et efficace est essentiel pour maintenir la vie, car un arrêt du cœur compromet rapidement l’apport vital d’oxygène et d’énergie."
     },
     "poumons": {
         "titre": "Les Souffles Vitaux",
-        "contenu": "Les poumons permettent l'échange d'oxygène et de dioxyde de carbone, indispensable pour alimenter notre organisme en énergie."
+        "contenu": "Les poumons permettent la respiration, un processus vital pour la survie. Ils captent l’oxygène de l’air pour le transférer au sang et évacuent le dioxyde de carbone, un déchet métabolique. Ce rôle crucial dans l’échange gazeux soutient le fonctionnement des autres organes et maintient l’équilibre acido-basique du corps."
     },
     "estomac": {
-        "titre": "La Forge de la Digestion",
-        "contenu": "L'estomac décompose les aliments en nutriments essentiels grâce à ses sucs gastriques, assurant le carburant de notre corps."
+        "titre": "L'estomac",
+        "contenu": "L’estomac est un élément central du système digestif. Il décompose les aliments grâce à des enzymes et des acides, les préparant pour l’absorption des nutriments dans l’intestin. Il agit aussi comme une barrière contre les agents pathogènes, jouant un rôle important dans la santé globale du corps."
     },
     "rein": {
-        "titre": "Les Filtreurs du Sang",
-        "contenu": "Les reins purifient le sang en éliminant les déchets et en régulant l'équilibre hydrique et électrolytique du corps."
+        "titre": "Les Reins",
+        "contenu": "Les reins sont les filtres naturels du corps humain. Ils éliminent les toxines et les déchets du sang, produisant l’urine pour leur excrétion. En plus de cette fonction, ils régulent la pression sanguine, l’équilibre hydrique et les niveaux de minéraux, contribuant ainsi à maintenir une santé optimale."
     },
     "foie": {
-        "titre": "Le Laboratoire Chimique",
-        "contenu": "Le foie traite les toxines, stocke l'énergie et participe à la digestion des graisses grâce à la production de bile."
+        "titre": "Le Foie",
+        "contenu": "Le foie est une véritable usine métabolique. Il transforme les nutriments absorbés par l’intestin, détoxifie les substances nocives et stocke l’énergie sous forme de glycogène. Il produit également des protéines essentielles et des substances comme la bile, indispensable à la digestion des graisses, soulignant son rôle central dans le métabolisme et la détoxification."
     },
     "silence": {
-        "titre": "L'Écho de l'Absence",
-        "contenu": "Le silence est l'état d'absence de bruit, un moment de quiétude permettant introspection, repos et recentrage mental."
+        "titre": "La pollution sonore sous marine ",
+        "contenu": "La pollution sonore générée par certaines activités humaines, tels le transport maritime. Elle mets en péril la survie d’espèces animales comme végétales."
     },
     "gcm": {
         "titre": "La Force des Glaciers",
@@ -33,7 +33,7 @@
     },
     "phytoplancton": {
         "titre": "Le Poumon Bleu",
-        "contenu": "Le phytoplancton est une base essentielle de la chaîne alimentaire océanique et produit la moitié de l’oxygène de notre planète."
+        "contenu": "Le phytoplancton constitue 50 % de la production primaire d'oxygène à l’échelle mondiale et est à la base des réseaux trophiques océaniques et de l'alimentation des oiseaux marins. Il joue un rôle essentiel dans le rétrocontrôle du climat global, notamment en pompant le CO2 (gaz à effet de serre) de l'air."
     },
     "surexploitation": {
         "titre": "Le Danger Invisible",
@@ -44,7 +44,7 @@
         "contenu": "Les icebergs, détachés des glaciers, flottent dans les océans et témoignent des changements climatiques en cours."
     },
     "corrail": {
-        "titre": "Les Jardins Sous-Marins",
-        "contenu": "Le corail forme des récifs abritant une biodiversité exceptionnelle, mais il est menacé par le réchauffement climatique et l'acidification des océans."
+        "titre": "Massif coralliens",
+        "contenu": "Le corail forme des récifs abritant une biodiversité exceptionnelle, mais il est menacé par le réchauffement climatique et l'acidification des océans. Les récifs coralliens abritent environ 25 % de toute la biodiversité marine, bien qu'ils couvrent moins de 1 % de la surface des océans. Cela en fait l'un des écosystèmes les plus diversifiés de la planète."
     }
 }

@@ -53,6 +53,7 @@ body {
 /* OCEAN */
 #ocean {
     background-color: rgba(58, 109, 140, 0.7);
+    display: none;
 }
 
 
@@ -123,4 +124,5 @@ body {
     color: aliceblue;
     padding-left: .2em;
     padding-right: .2em;
+    text-align: justify;
 }

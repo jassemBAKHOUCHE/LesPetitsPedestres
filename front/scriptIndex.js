@@ -8,6 +8,8 @@ fetch('dataOcean.json')
   })
   .then(data => {
     content = data
+    display_content_h()
+    display_content_o()
   })
   .catch(error => {
     console.error('Erreur lors de la requête :', error);
@@ -41,40 +43,43 @@ function changeSelect(e) {
     }
 }
 
-document.getElementById("obs").addEventListener("click", changeSelect)
-document.getElementById("healTools_cont").addEventListener("click", changeSelect)
-document.getElementById("killTools_cont").addEventListener("click", changeSelect)
+// document.getElementById("obs").addEventListener("click", changeSelect)
+// document.getElementById("healTools_cont").addEventListener("click", changeSelect)
+// document.getElementById("killTools_cont").addEventListener("click", changeSelect)
 
-function display_content_h(id) {
-    var reponse = content[id]
-    var dest = document.getElementById("ocean_text")
+function display_content_h() {
+    var reponse = content[content_hbody.getAttribute("data_1")]
+    var dest = document.getElementById("humain_text")
     dest.innerHTML = "<h2>"+ reponse["titre"] +"</h2>" + reponse["contenu"]
 }
 
-function display_content_o(id) {
-    var reponse = content[id]
-    var dest = document.getElementById("humain_text")
+function display_content_o() {
+    var reponse = content[content_ocean.getAttribute("data_1")]
+    var dest = document.getElementById("ocean_text")
     dest.innerHTML = "<h2>"+ reponse["titre"] +"</h2>" + reponse["contenu"]
 }
 
 function changeOrgan(e) {
     if (e.target.tagName == "IMG") {
 
-        //content_hbody.src != e.target.src && !(content_ocean.src == e.target.data_src)
-
         if (e.target.getAttribute("data_i")=="1") {
             selected_h.className = ""
             selected_o.className = ""
+            
             selected_h = e.target
             selected_o = document.getElementById(e.target.getAttribute("data_id"))
             e.target.className = "selected"
+            
             document.getElementById(e.target.getAttribute("data_id")).className = "selected"
             e.target.className = "selected"
+            
             document.getElementById(e.target.getAttribute("data_id")).className = "selected"
             content_hbody.alt = e.target.alt
             content_hbody.src = e.target.src
+            content_hbody.setAttribute("data_1", e.target.id)
             content_ocean.alt = e.target.getAttribute("data_alt")
             content_ocean.src = e.target.getAttribute("data_src")
+            content_ocean.setAttribute("data_1", e.target.getAttribute("data_id"))
             display_content_h(e.target.id)
             display_content_o(e.target.getAttribute("data_id"))
         }
@@ -88,11 +93,13 @@ function changeOrgan(e) {
             e.target.className = "selected"
             content_hbody.alt = e.target.getAttribute("data_alt")
             content_hbody.src = e.target.getAttribute("data_src")
+            content_hbody.setAttribute("data_1", e.target.getAttribute("data_id"))
 
             content_ocean.alt = e.target.alt
             content_ocean.src = e.target.src
-            display_content_h(e.target.getAttribute("data_id"))
-            display_content_o(e.target.id)
+            content_ocean.setAttribute("data_1", e.target.id)
+            display_content_h(e.target.id)
+            display_content_o(e.target.getAttribute("data_id"))
         }
     }
 }
