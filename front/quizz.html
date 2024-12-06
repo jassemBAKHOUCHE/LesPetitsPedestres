@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-    <link rel="stylesheet" href="public/css/quizz.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css"> <!-- Lien vers le CSS -->
+  <title>Barre de champ rétro</title>
 </head>
 <body>
-    <div id="quiz-container">
-        <div id="progress-container">
-            <div id="progress-bar"></div>
-        </div>
-        <div id="question-index"></div>
-        <div id="question-container">
-            <h2 id="question">Question</h2>
-            <div id="answer-buttons" class="btn-container"></div>
-        </div>
-        <button id="next-btn" class="next-btn">Suivant</button>
-        <div id="score-container" class="hide">
-            <h3>Votre score: <span id="score"></span></h3>
-            <button id="replay-btn" class="replay-btn">Rejouer</button>
-        </div>
+  <div class="container">
+    <div class="question">
+      <div class="question-text">
+        Lequel apparait dans le film :<br>“Il était une fois en Laravel”
+      </div>
     </div>
-    <script src="scripts/quizz.js"></script>
+    <div class="options">
+      <div class="option">
+        <div class="option-text">Les algues marines</div>
+      </div>
+      <div class="option">
+        <div class="option-text">Un iceberg tar’ géant</div>
+      </div>
+      <div class="option">
+        <div class="option-text">Une baleine bleue claire</div>
+      </div>
+      <div class="option">
+        <div class="option-text">Un fish and chips</div>
+      </div>
+    </div>
+    <div class="button">
+      <div class="button-text"><p>SUIVANT</p></div>
+    </div>
+  </div>
+  <script type="module" src="quizz/quizz.js" defer></script>
 </body>
 </html>
