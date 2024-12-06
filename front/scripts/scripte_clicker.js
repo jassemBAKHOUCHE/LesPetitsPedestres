@@ -5,15 +5,45 @@ console.log("scripte_clicker.js chargé");
 // Define variables to avoid reference errors
 let oldDt = 0;
 let secondsPassed = 0;
+let money = 0;
+let waterHeight = 0;
 
 let fpsP;
 let waterDiv;
 let falseCursor;
 let collectButton;
+let moneyP;
 let bubbles = []; // Array to store bubble elements and their data
+
+// List of image paths for random bubble selection
+const bubbleImages = [
+    'images/plastic-bag.jpg'
+];
 
 // Listen to the onLoad event
 window.onload = init;
+
+function registerUser() {
+    fetch('http://localhost:8000/api/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            pseudo: 'test',
+            password: 'test',
+        })
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    }).catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+}
 
 // Trigger init function when the page has loaded
 function init() {
@@ -21,6 +51,9 @@ function init() {
     waterDiv = document.getElementById('water');
     falseCursor = document.getElementById('falseCursor');
     collectButton = document.getElementById('collect');
+
+    // Register the user
+    registerUser();
 
     // Add event listeners
     waterDiv.addEventListener('click', (e) => {
@@ -37,11 +70,17 @@ function init() {
         collect(e, falseCursor);
     });
 
+    console.log("d")
     // Start spawning divs every 5 seconds
-    setInterval(spawnRandomDiv, 5000);
+
 
     // Request an animation frame for the first time
     window.requestAnimationFrame(gameLoop);
+}
+
+function refreshMoney() {
+    // TODO Update the money counter
+    moneyP.innerText = "Money: " + money +"♻️";
 }
 
 /**
@@ -59,51 +98,71 @@ function gameLoop(dt) {
     // Update all bubbles
     updateBubbles();
 
+    // Update water height
+    waterHeight = 5 * Math.sin(dt / 1000); // 10 pixels per second
+    waterDiv.style.height = (80 + waterHeight) + '%';
+
+    // Prevent the false cursor from going above the water
+    const falseCursorRect = falseCursor.getBoundingClientRect();
+    const waterDivRect = waterDiv.getBoundingClientRect();
+    if (falseCursorRect.top < waterDivRect.top) {
+        falseCursor.style.top = waterDivRect.top + 'px';
+    }
+    if (Math.floor(Math.random()*10000)<=25) {
+        spawnRandomDiv()
+        
+    }
     // The loop function has reached its end
     // Keep requesting new frames
     window.requestAnimationFrame(gameLoop);
 }
 
 /**
- * Spawn a new div element at a random position inside waterDiv
+ * Spawn a new image element at a random position inside waterDiv
  */
 function spawnRandomDiv() {
-    // Create a new bubble div
-    const newDiv = document.createElement('div');
+    // Create a new bubble image element
+    const newImg = document.createElement('img');
 
-    // Assign the 'bubble' class for styling
-    newDiv.classList.add('bubble');
+    // Randomly select an image from the bubbleImages array
+    const randomImage = bubbleImages[Math.floor(Math.random() * bubbleImages.length)];
+    newImg.src = randomImage; // Set the image source to the randomly selected image
+    newImg.alt = 'Bubble'; // Alt text for the image for accessibility
+    newImg.classList.add('bubble'); // Assign a class for styling (optional)
+
+    // Set image size (make sure it matches your bubble size)
+    newImg.style.width = '50px';
+    newImg.style.height = '50px';
 
     // Generate random positions within waterDiv boundaries
     const waterDivRect = waterDiv.getBoundingClientRect();
-    const randomX = Math.random() * (waterDivRect.width - 50); // Subtract width of the div
-    const randomY = Math.random() * (waterDivRect.height - 50); // Subtract height of the div
-    newDiv.style.width = '50px'
-    // Add click event listener
-    newDiv.addEventListener('click', (e) => {
-        if(!e.isTrusted){
-            if(newDiv.style.backgroundColor != 'red'){
-                newDiv.style.backgroundColor = 'red'
+    const randomX = Math.random() * (waterDivRect.width - 50); // Subtract width of the image
+    const randomY = Math.random() * (waterDivRect.height - 50); // Subtract height of the image
+
+    // Add click event listener for the image
+    newImg.addEventListener('click', (e) => {
+        if (!e.isTrusted) {
+            if (newImg.style.backgroundColor !== 'red') {
+                newImg.remove()
             }
         }
-        
     });
 
-    // Append the new div to waterDiv
-    waterDiv.appendChild(newDiv);
+    // Append the new image to waterDiv
+    waterDiv.appendChild(newImg);
 
     // Add bubble data to the bubbles array
     bubbles.push({
-        element: newDiv,
+        element: newImg,
         x: randomX,
         y: randomY,
-        radius: 25, // Half of the width/height
+        radius: 25, // Half of the width/height of the image
         speedX: (Math.random() * 2 - 1) * 100, // Random horizontal speed (-100 to 100 pixels/second)
         speedY: (Math.random() * 2 - 1) * 100, // Random vertical speed (-100 to 100 pixels/second)
     });
 
-    // Initialize the bubble's position
-    newDiv.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    // Initialize the image's position using transform for smooth movement
+    newImg.style.transform = `translate(${randomX}px, ${randomY}px)`;
 }
 
 /**
@@ -154,7 +213,7 @@ function updateBubbles() {
             }
         }
 
-        // Update the bubble's position using transform
+        // Update the bubble's position using transform for smooth movement
         bubbleA.element.style.transform = `translate(${bubbleA.x}px, ${bubbleA.y}px)`;
     }
 }
