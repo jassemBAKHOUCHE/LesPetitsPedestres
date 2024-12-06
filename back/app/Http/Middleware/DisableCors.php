@@ -12,8 +12,7 @@ class DisableCors
 
         // Désactiver toutes les restrictions CORS
         $response->headers->set('Access-Control-Allow-Origin', $request->headers->get('Origin'));
-        $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        $response->headers->set('Access-Control-Allow-Headers', '*');
+
         $response->headers->set('Access-Control-Allow-Credentials', 'true');
 
         return $response;
