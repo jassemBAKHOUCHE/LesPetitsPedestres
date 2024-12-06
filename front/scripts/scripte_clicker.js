@@ -51,6 +51,7 @@ function init() {
     waterDiv = document.getElementById('water');
     falseCursor = document.getElementById('falseCursor');
     collectButton = document.getElementById('collect');
+    moneyP = document.getElementById('money');
 
     // Register the user
     registerUser();
@@ -68,6 +69,14 @@ function init() {
         e.stopPropagation();
         e.stopImmediatePropagation()
         collect(e, falseCursor);
+    });
+
+    window.addEventListener('keypress', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.key === ' ') {
+            collect(e, falseCursor);
+        }
     });
 
     console.log("d")
@@ -108,10 +117,11 @@ function gameLoop(dt) {
     if (falseCursorRect.top < waterDivRect.top) {
         falseCursor.style.top = waterDivRect.top + 'px';
     }
+
     if (Math.floor(Math.random()*10000)<=25) {
-        spawnRandomDiv()
-        
+    spawnRandomDiv()        
     }
+
     // The loop function has reached its end
     // Keep requesting new frames
     window.requestAnimationFrame(gameLoop);
@@ -144,6 +154,8 @@ function spawnRandomDiv() {
         if (!e.isTrusted) {
             if (newImg.style.backgroundColor !== 'red') {
                 newImg.remove()
+                money += 1;
+                refreshMoney();
             }
         }
     });
